@@ -1,26 +1,24 @@
 const express = require("express");
 const http = require("http");
 const { initializeAPI } = require("./api");
-require("dotenv").config();
 
-const pinoHttp = require("pino-http")();
-
+// Create the express server
 const app = express();
 app.use(express.json());
-
-// Usar pino-http como middleware
-app.use(pinoHttp);
-
 const server = http.createServer(app);
 
+// deliver static files from the client folder like css, js, images
 app.use(express.static("client"));
+// route for the homepage
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/client/index.html");
 });
 
+// Initialize the REST api
 initializeAPI(app);
 
-const serverPort = process.env.PORT || 3000;
+//start the web server
+const serverPort = 3000;
 server.listen(serverPort, () => {
   console.log(`Express Server started on port ${serverPort}`);
 });

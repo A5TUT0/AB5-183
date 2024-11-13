@@ -10,46 +10,47 @@
     <script src="/scripts/index.js"></script>
   </head>
   <body
-    class="flex flex-col w-screen h-screen gap-3 text-white bg-slate-800 items-center"
+    class="flex flex-col items-center w-screen h-screen gap-3 text-white bg-slate-800"
   >
-    <header
-      class="flex items-center justify-between flex-shrink-0 pt-3 h-14 w-full max-w-4xl"
-    >
-      <h1 class="text-2xl font-bold">💬 Mini Twitter</h1>
-      <button id="logout" class="px-4 py-2 bg-red-500 hover:bg-red-400 rounded">
-        Logout
-      </button>
+    <header class="flex flex-col items-center flex-shrink-0 gap-4 pt-3">
+      <img src="/img/logo.png" class="w-48 h-48 rounded-full" />
+      <h1 class="text-2xl font-bold">🚀 M183 - Starter 🚀</h1>
     </header>
-    <div class="gap-2 flex w-full max-w-4xl">
-      <input
-        id="new-tweet"
-        placeholder="What are you thinking about?"
-        type="text"
-        class="w-full p-2 px-4 bg-slate-400 rounded grow placeholder-gray-200"
-      />
-      <button
-        id="post-tweet"
-        class="px-4 py-2 bg-green-500 hover:bg-green-400 rounded"
-      >
-        Post
-      </button>
-    </div>
-    <main class="flex flex-col grow max-w-4xl w-full gap-2 overflow-y-auto">
-      <div class="flex flex-col grow gap-2">
-        <h2 class="font-semibold self-center">Feed</h2>
-        <div id="feed" class="flex flex-col gap-2 w-full"></div>
+    <main class="flex flex-col w-full max-w-md gap-2 overflow-y-auto grow">
+      <div class="flex flex-col gap-2 grow">
+        <div id="feed" class="flex flex-col w-full gap-2">
+          <div class="flex flex-col w-full gap-2">
+            <input
+              id="username"
+              placeholder="Username"
+              type="text"
+              class="w-full p-2 px-4 placeholder-gray-200 rounded bg-slate-400 grow"
+            />
+            <input
+              id="password"
+              placeholder="Password"
+              type="password"
+              class="w-full p-2 px-4 placeholder-gray-200 rounded bg-slate-400 grow"
+            />
+            <div class="grid grid-cols-2 gap-2">
+              <button
+                id="login"
+                class="px-4 py-2 bg-green-500 rounded hover:bg-green-400"
+              >
+                Login
+              </button>
+              <button
+                id="bruteForce"
+                class="px-4 py-2 bg-red-500 rounded hover:bg-red-400"
+              >
+  
+                💀 BruteForce 💀
+              </button>
+            </div>
+            <span id="result" class="text-green-500"></span>
+          </div>
       </div>
     </main>
-    <div>
-      <input type="text" id="post-title" placeholder="Título del post" />
-      <textarea id="post-content" placeholder="Contenido del post"></textarea>
-      <button id="create-post">Crear Post</button>
-    </div>
-
-    <div id="posts"></div>
-
-    <button id="logout">Cerrar Sesión</button>
-
     <footer class="flex items-center justify-center flex-shrink-0 h-14">
       <p>Made with ❤️ and a lot of ☕️ by SwitzerChees</p>
     </footer>
