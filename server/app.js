@@ -3,8 +3,14 @@ const http = require("http");
 const { initializeAPI } = require("./api");
 require("dotenv").config();
 
+const pinoHttp = require("pino-http")();
+
 const app = express();
 app.use(express.json());
+
+// Usar pino-http como middleware
+app.use(pinoHttp);
+
 const server = http.createServer(app);
 
 app.use(express.static("client"));

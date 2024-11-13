@@ -19,28 +19,35 @@ const initializeAPI = async (app) => {
 };
 
 const getFeed = async (req, res) => {
+  req.log.info("Obteniendo feed");
   const query = req.query.q;
   const tweets = await queryDB(db, query);
   res.json(tweets);
 };
 
 const postTweet = async (req, res) => {
-  await insertDB(db, req.body.query);
+  const { query } = req.body;
+  req.log.info({ query }, "Publicando tweet");
+  await insertDB(db, query);
   res.json({ status: "ok" });
 };
 
 const login = async (req, res) => {
   const { username, password } = req.body;
+  req.log.info({ username }, "Intento de login");
   const query = `SELECT * FROM users WHERE username = ? AND password = ?`;
   const user = await queryDB(db, query, [username, password]);
   if (user.length === 1) {
+    req.log.info({ username }, "Login exitoso");
     res.json(user[0]);
   } else {
+    req.log.warn({ username }, "Login fallido");
     res.json(null);
   }
 };
 
 const getPosts = async (req, res) => {
+  req.log.info("Obteniendo posts");
   const posts = await queryDB(db, "SELECT * FROM posts");
   const decryptedPosts = posts.map((post) => ({
     id: post.id,
@@ -52,6 +59,9 @@ const getPosts = async (req, res) => {
 
 const createPost = async (req, res) => {
   const { title, content } = req.body;
+  const username = req.headers["x-username"] || "unknown";
+  req.log.info({ username, title }, "Creando post");
+
   const encryptedTitle = aes.encrypt(title);
   const encryptedContent = aes.encrypt(content);
   const query = `INSERT INTO posts (title, content) VALUES (?, ?)`;
@@ -60,6 +70,7 @@ const createPost = async (req, res) => {
 };
 
 const generateKeys = (req, res) => {
+  req.log.info("Generando claves RSA");
   const key = new NodeRSA({ b: 1024 });
   const publicKey = key.exportKey("public");
   const privateKey = key.exportKey("private");

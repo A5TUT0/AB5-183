@@ -10,9 +10,13 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@vrbo/pino-rotating-file": "^4.4.0",
     "dotenv": "^16.0.0",
     "express": "^4.17.1",
+    "install": "^0.13.0",
     "node-rsa": "^1.1.1",
+    "npm": "^10.9.0",
+    "pino-http": "^10.3.0",
     "sqlite3": "^5.0.2"
   },
   "devDependencies": {
