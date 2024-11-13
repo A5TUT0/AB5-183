@@ -2,12 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mini Twitter</title>
     <link rel="stylesheet" href="/styles.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="/scripts/index.js"></script>
   </head>
   <body
     class="flex flex-col items-center w-screen h-screen gap-3 text-white bg-slate-800"
@@ -18,41 +15,55 @@
     </header>
     <main class="flex flex-col w-full max-w-md gap-2 overflow-y-auto grow">
       <div class="flex flex-col gap-2 grow">
-        <div id="feed" class="flex flex-col w-full gap-2">
-          <div class="flex flex-col w-full gap-2">
-            <input
-              id="username"
-              placeholder="Username"
-              type="text"
-              class="w-full p-2 px-4 placeholder-gray-200 rounded bg-slate-400 grow"
-            />
-            <input
-              id="password"
-              placeholder="Password"
-              type="password"
-              class="w-full p-2 px-4 placeholder-gray-200 rounded bg-slate-400 grow"
-            />
-            <div class="grid grid-cols-2 gap-2">
-              <button
-                id="login"
-                class="px-4 py-2 bg-green-500 rounded hover:bg-green-400"
-              >
-                Login
-              </button>
-              <button
-                id="bruteForce"
-                class="px-4 py-2 bg-red-500 rounded hover:bg-red-400"
-              >
-  
-                💀 BruteForce 💀
-              </button>
-            </div>
-            <span id="result" class="text-green-500"></span>
-          </div>
+        <div class="flex flex-col w-full gap-2">
+          <input
+            id="username"
+            placeholder="Username"
+            type="text"
+            class="w-full p-2 px-4 placeholder-gray-200 rounded bg-slate-400 grow"
+          />
+          <input
+            id="password"
+            placeholder="Password"
+            type="password"
+            class="w-full p-2 px-4 placeholder-gray-200 rounded bg-slate-400 grow"
+          />
+          <button
+            id="login"
+            class="px-4 py-2 bg-green-500 rounded hover:bg-green-400"
+          >
+            Login
+          </button>
+          <span id="result" class="text-green-500"></span>
+        </div>
+        <div class="flex flex-col w-full gap-2">
+          <input
+            id="postTitle"
+            placeholder="Título"
+            type="text"
+            class="w-full p-2 px-4 placeholder-gray-200 rounded bg-slate-400 grow"
+          />
+          <textarea
+            id="postContent"
+            placeholder="Contenido"
+            class="w-full p-2 px-4 placeholder-gray-200 rounded bg-slate-400 grow"
+          ></textarea>
+          <button
+            id="createPost"
+            class="px-4 py-2 bg-blue-500 rounded hover:bg-blue-400"
+          >
+            Crear Post
+          </button>
+        </div>
+        <div id="feed" class="flex flex-col w-full gap-2"></div>
       </div>
     </main>
     <footer class="flex items-center justify-center flex-shrink-0 h-14">
       <p>Made with ❤️ and a lot of ☕️ by SwitzerChees</p>
     </footer>
+
+    <!-- Incluye las librerías al final del body -->
+    <script src="https://cdn.jsdelivr.net/npm/jsencrypt/bin/jsencrypt.min.js"></script>
+    <script src="/scripts/index.js"></script>
   </body>
 </html>
